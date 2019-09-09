@@ -87,12 +87,16 @@
         <snapshotRepository>
             <id>junit-snapshot-repo</id>
             <name>Nexus Snapshot Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <!-- <url>https://oss.sonatype.org/content/repositories/snapshots/</url> -->
+            <url>http://192.168.1.104:8081/nexus/content/repositories/snapshots/</url>
+
         </snapshotRepository>
         <repository>
             <id>junit-releases-repo</id>
             <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <!-- <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url> -->
+            <url>http://192.168.1.104:8081/nexus/content/repositories/releases/</url>
+
         </repository>
         <site>
             <id>junit.github.io</id>
@@ -464,30 +468,7 @@
             <!--
             Signs all artifacts before deploying to Maven Central.
             -->
-            <build>
-                <plugins>
-                    <plugin>
-                        <!--
-                        The goal is to sign all artifacts so that the user may verify them before downloading.
-                        The automatic build system may reuire your key ID, and passphrase specified using system properties:
-                        -Dgpg.passphrase="<passphrase>" -Dgpg.keyname="<your key ID>"
-                        In order to create the key pair, use the command "gpg &ndash;&ndash;gen-key".
-                        (&ndash;&ndash; stands for double dash)
-                        -->
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <executions>
-                            <execution>
-                                <id>gpg-sign</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
+
         </profile>
         <profile>
             <id>generate-docs</id>
