@@ -35,7 +35,7 @@ pipeline {
                 build(
                     job: 'spring.petclinic.app.pipeline',
                     parameters: [
-                        string(name: 'DEPLOY_JUNIT_UPDATE',
+                        booleanParam(name: 'DEPLOY_JUNIT_UPDATE',
                         value: true)
                     ]
                 )
