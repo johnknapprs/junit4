@@ -24,12 +24,12 @@ pipeline {
                 sh('./mvnw clean install')            }
         }
         stage('Deploy') {
-            steps {
-                when {
-                    expression {
-                        return params.DEPLOY_NEXUS_BUILD
-                    }
+            when {
+                expression {
+                    return params.DEPLOY_NEXUS_BUILD
                 }
+            }
+            steps {
                 sh('./mvnw -s ./settings.xml clean deploy')
                 
                 build(
