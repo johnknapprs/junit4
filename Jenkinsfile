@@ -26,6 +26,15 @@ pipeline {
             }
             steps {
                 sh('./mvnw -s ./settings.xml clean deploy')
+
+                build(
+                    job: 'spring.petclinic.pipeline',
+                    parameters: [
+                        booleanParam(name: 'DEPLOY_JUNIT_UPDATE',
+                        value: true)
+                    ]
+                )
+
             }
         }
     }
